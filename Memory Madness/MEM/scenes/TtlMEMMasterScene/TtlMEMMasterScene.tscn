@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://clg6igpy482ic"]
+
+[ext_resource type="Texture2D" uid="uid://bmhrbyl3n08dd" path="res://MEM/assets/images/backgroundEmpty.png" id="1_10t08"]
+[ext_resource type="Script" path="res://MEM/scenes/TtlMEMMasterScene/TtlMEMMasterScene.gd" id="1_ojosj"]
+[ext_resource type="PackedScene" uid="uid://dvryonuhgv87r" path="res://MEM/scenes/TtlMEMMainScreen/TtlMEMMainScreen.tscn" id="2_my8ea"]
+[ext_resource type="PackedScene" uid="uid://c7l0vuoyjmof2" path="res://MEM/scenes/TtlMEMGameScreen/TtlMEMGameScreen.tscn" id="3_0wjhh"]
+
+[node name="MasterScene" type="CanvasLayer"]
+script = ExtResource("1_ojosj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_10t08")
+
+[node name="TtlMEMMainScreen" parent="." instance=ExtResource("2_my8ea")]
+
+[node name="TtlMemGameScreen" parent="." instance=ExtResource("3_0wjhh")]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]

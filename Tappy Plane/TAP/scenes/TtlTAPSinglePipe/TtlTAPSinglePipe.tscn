@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1i1jfff83s6n"]
+
+[ext_resource type="Texture2D" uid="uid://dqqepma0l58i0" path="res://TAP/assets/pipes/pipe.png" id="1_stjt8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5arud"]
+size = Vector2(70, 561)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o701m"]
+size = Vector2(49, 54.5)
+
+[node name="TtlTapSinglePipe" type="Area2D"]
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_stjt8")
+centered = false
+offset = Vector2(-35, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 350.5)
+shape = SubResource("RectangleShape2D_5arud")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 44)
+shape = SubResource("RectangleShape2D_o701m")

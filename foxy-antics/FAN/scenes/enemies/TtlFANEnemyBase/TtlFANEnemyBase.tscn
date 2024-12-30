@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf6b6sy56wfe8"]
+
+[ext_resource type="Script" path="res://FAN/scenes/enemies/TtlFANEnemyBase/TtlFANEnemyBase.gd" id="1_v53kn"]
+
+[node name="TtlFANEnemyBase" type="CharacterBody2D" groups=["Moveables"]]
+collision_layer = 0
+script = ExtResource("1_v53kn")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="OnScreenEntered"]
+[connection signal="area_entered" from="Hitbox" to="." method="OnHitboxAreaEntered"]

@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://dshd37al33f3s"]
+
+[ext_resource type="Script" path="res://TAP/scenes/TtlTAPGameOver/TtlTAPGameOver.gd" id="1_cmc2j"]
+[ext_resource type="LabelSettings" uid="uid://byyd13y14rcj3" path="res://TAP/assets/sh_48_red.tres" id="2_r1g26"]
+[ext_resource type="AudioStream" uid="uid://bjavcmqvhr2vs" path="res://TAP/assets/audio/game_over.wav" id="3_k3db1"]
+
+[node name="TtlTAPGameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cmc2j")
+
+[node name="GameOverLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = " GAME OVER"
+label_settings = ExtResource("2_r1g26")
+
+[node name="RestartLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press R to restart
+Press Q to quit"
+label_settings = ExtResource("2_r1g26")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_k3db1")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

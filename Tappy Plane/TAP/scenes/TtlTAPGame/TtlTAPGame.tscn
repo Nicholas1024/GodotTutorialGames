@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://cntfiks15rs8w"]
+
+[ext_resource type="Script" path="res://TAP/scenes/TtlTAPGame/TtlTAPGame.gd" id="1_l73qb"]
+[ext_resource type="PackedScene" uid="uid://38lqbho0ap12" path="res://TAP/scenes/TtlTAPPlane/TtlTAPPlane.tscn" id="4_kgxu5"]
+[ext_resource type="PackedScene" uid="uid://dumbw7y3ifbbq" path="res://TAP/scenes/TtlTAPBarrier/TtlTAPBarrier.tscn" id="5_1pt5j"]
+[ext_resource type="PackedScene" uid="uid://wltaaq7p2e30" path="res://TAP/scenes/TtlTAPPipesObstacle/TtlTAPPipesObstacle.tscn" id="6_e48c7"]
+[ext_resource type="PackedScene" uid="uid://c8xlp0gmerlju" path="res://TAP/scenes/TtlTAPScrollingBackground/TtlTAPScrollingBackground.tscn" id="7_pexpy"]
+[ext_resource type="PackedScene" uid="uid://bkxxcacdtdual" path="res://TAP/scenes/TtlTAPHeadsUpDisplay/TtlTAPHeadsUpDisplay.tscn" id="8_33e4w"]
+[ext_resource type="PackedScene" uid="uid://dshd37al33f3s" path="res://TAP/scenes/TtlTAPGameOver/TtlTAPGameOver.tscn" id="9_hjv1u"]
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("m_oPipesTimer")]
+script = ExtResource("1_l73qb")
+m_oPipesObstacle = ExtResource("6_e48c7")
+m_oPipesTimer = NodePath("SpawnTimer")
+
+[node name="Plane" parent="." instance=ExtResource("4_kgxu5")]
+position = Vector2(57, 383)
+
+[node name="Floor" parent="." instance=ExtResource("5_1pt5j")]
+position = Vector2(-2, 858)
+collision_layer = 2
+
+[node name="Ceiling" parent="." instance=ExtResource("5_1pt5j")]
+position = Vector2(-3, -27)
+collision_layer = 2
+
+[node name="PipesHolder" type="Node" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("8_33e4w")]
+
+[node name="TtlTAPGameOver" parent="CanvasLayer" instance=ExtResource("9_hjv1u")]
+
+[node name="TtlTapScrollingBackground" parent="." instance=ExtResource("7_pexpy")]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

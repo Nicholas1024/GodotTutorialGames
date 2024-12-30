@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://bs67osw2dey6l"]
+
+[ext_resource type="PackedScene" uid="uid://cf6b6sy56wfe8" path="res://FAN/scenes/enemies/TtlFANEnemyBase/TtlFANEnemyBase.tscn" id="1_tgdwd"]
+[ext_resource type="Script" path="res://FAN/scenes/enemies/TtlFANEnemyEagle/TtlFANEnemyEagle.gd" id="2_s6yti"]
+[ext_resource type="Texture2D" uid="uid://c72ey0vwvftfe" path="res://FAN/assets/enemies/eagle/eagle-attack.png" id="3_31s85"]
+[ext_resource type="PackedScene" uid="uid://bkpat5s5jw6t6" path="res://FAN/scenes/TtlFANShooter/TtlFANShooter.tscn" id="4_apl0b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6do3p"]
+atlas = ExtResource("3_31s85")
+region = Rect2(0, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kp7hv"]
+atlas = ExtResource("3_31s85")
+region = Rect2(40, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8j8fg"]
+atlas = ExtResource("3_31s85")
+region = Rect2(80, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdhpu"]
+atlas = ExtResource("3_31s85")
+region = Rect2(120, 0, 40, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xn3vf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6do3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kp7hv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8j8fg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdhpu")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oc2ex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7s5o"]
+size = Vector2(10, 10)
+
+[node name="TtlFANEnemyEagle" instance=ExtResource("1_tgdwd")]
+collision_mask = 0
+script = ExtResource("2_s6yti")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_xn3vf")
+animation = &"fly"
+frame_progress = 0.958527
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_oc2ex")
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_p7s5o")
+
+[node name="DirectionTimer" type="Timer" parent="." index="4"]
+wait_time = 3.0
+
+[node name="PlayerDetector" type="RayCast2D" parent="." index="5"]
+target_position = Vector2(0, 200)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="TtlFANShooter" parent="." index="6" instance=ExtResource("4_apl0b")]
+m_rlBulletSpeed = 120.0
+m_eiBulletType = 3
+m_rlShootDelay = 1.5
+
+[connection signal="timeout" from="DirectionTimer" to="." method="OnDirectionTimerTimeout"]

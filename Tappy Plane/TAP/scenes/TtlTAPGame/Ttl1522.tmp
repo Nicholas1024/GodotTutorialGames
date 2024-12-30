@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://cntfiks15rs8w"]
+
+[ext_resource type="Texture2D" uid="uid://bngspo7h1vhxn" path="res://TAP/assets/background/sky.png" id="1_av8s7"]
+[ext_resource type="Script" path="res://TAP/scenes/TtlTAPGame/TtlTAPGame.gd" id="1_l73qb"]
+[ext_resource type="Texture2D" uid="uid://us37ufujirox" path="res://TAP/assets/background/rocks_1.png" id="2_j8u81"]
+[ext_resource type="Texture2D" uid="uid://4144gxfuqgoe" path="res://TAP/assets/background/rocks_2.png" id="3_0swgg"]
+[ext_resource type="PackedScene" uid="uid://38lqbho0ap12" path="res://TAP/scenes/TtlTAPPlane/TtlTAPPlane.tscn" id="4_kgxu5"]
+[ext_resource type="PackedScene" uid="uid://dumbw7y3ifbbq" path="res://TAP/scenes/TtlTAPBarrier/TtlTAPBarrier.tscn" id="5_1pt5j"]
+[ext_resource type="PackedScene" uid="uid://wltaaq7p2e30" path="res://TAP/scenes/TtlTAPPipesObstacle/TtlTAPPipesObstacle.tscn" id="6_e48c7"]
+[ext_resource type="PackedScene" uid="uid://bkxxcacdtdual" path="res://TAP/scenes/TtlTAPHeadsUpDisplay/TtlTAPHeadsUpDisplay.tscn" id="8_33e4w"]
+[ext_resource type="PackedScene" uid="uid://dshd37al33f3s" path="res://TAP/scenes/TtlTAPGameOver/TtlTAPGameOver.tscn" id="9_hjv1u"]
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("m_oPipesTimer")]
+script = ExtResource("1_l73qb")
+m_oPipesObstacle = ExtResource("6_e48c7")
+m_oPipesTimer = NodePath("SpawnTimer")
+
+[node name="Sky" type="Sprite2D" parent="."]
+position = Vector2(961, 342)
+texture = ExtResource("1_av8s7")
+
+[node name="Rocks1" type="Sprite2D" parent="."]
+position = Vector2(898, 271)
+texture = ExtResource("2_j8u81")
+
+[node name="Rocks2" type="Sprite2D" parent="."]
+position = Vector2(799, 363)
+texture = ExtResource("3_0swgg")
+
+[node name="Plane" parent="." instance=ExtResource("4_kgxu5")]
+position = Vector2(57, 383)
+
+[node name="Floor" parent="." instance=ExtResource("5_1pt5j")]
+position = Vector2(-2, 858)
+
+[node name="Ceiling" parent="." instance=ExtResource("5_1pt5j")]
+position = Vector2(-3, -27)
+
+[node name="PipesHolder" type="Node" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("8_33e4w")]
+
+[node name="TtlTAPGameOver" parent="CanvasLayer" instance=ExtResource("9_hjv1u")]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfq40gl0nl5ne"]
+
+[ext_resource type="Texture2D" uid="uid://2850vn00my2p" path="res://TAP/assets/pipes/laser2.png" id="1_r6pk4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o32t6"]
+size = Vector2(7, 244)
+
+[sub_resource type="Animation" id="Animation_be0f0"]
+resource_name = "Flicker"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.478431), Color(1, 1, 1, 0.14902), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cihp3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oyvr0"]
+_data = {
+"Flicker": SubResource("Animation_be0f0"),
+"RESET": SubResource("Animation_cihp3")
+}
+
+[node name="TtlTapLaser" type="Area2D"]
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 10)
+texture = ExtResource("1_r6pk4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6.5, 1)
+shape = SubResource("RectangleShape2D_o32t6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oyvr0")
+}
+autoplay = "Flicker"

@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8xlp0gmerlju"]
+
+[ext_resource type="Script" path="res://TAP/scenes/TtlTAPScrollingBackground/TtlTAPScrollingBackground.gd" id="1_eviqb"]
+[ext_resource type="PackedScene" uid="uid://b7qlved72ybnj" path="res://TAP/scenes/TtlTAPScrollingLayer/TtlTAPScrollingLayer.tscn" id="2_4geu5"]
+[ext_resource type="Texture2D" uid="uid://bngspo7h1vhxn" path="res://TAP/assets/background/sky.png" id="3_ow7at"]
+[ext_resource type="Texture2D" uid="uid://us37ufujirox" path="res://TAP/assets/background/rocks_1.png" id="4_0dwbi"]
+[ext_resource type="Texture2D" uid="uid://c6sauf62bmtc3" path="res://TAP/assets/background/clouds_2.png" id="4_w2dkx"]
+[ext_resource type="Texture2D" uid="uid://4144gxfuqgoe" path="res://TAP/assets/background/rocks_2.png" id="5_u4krm"]
+
+[node name="TtlTapScrollingBackground" type="ParallaxBackground"]
+script = ExtResource("1_eviqb")
+
+[node name="ParallaxLayer" parent="." instance=ExtResource("2_4geu5")]
+m_oTexture = ExtResource("3_ow7at")
+
+[node name="ParallaxLayer2" parent="." instance=ExtResource("2_4geu5")]
+m_oTexture = ExtResource("4_w2dkx")
+m_rsScrollScale = 0.3
+
+[node name="ParallaxLayer3" parent="." instance=ExtResource("2_4geu5")]
+m_oTexture = ExtResource("4_0dwbi")
+m_rsScrollScale = 0.6
+
+[node name="ParallaxLayer4" parent="." instance=ExtResource("2_4geu5")]
+m_oTexture = ExtResource("5_u4krm")
+m_rsScrollScale = 0.8

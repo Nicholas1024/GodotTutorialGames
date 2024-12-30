@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkb0l6b1j7nv3"]
+
+[ext_resource type="PackedScene" uid="uid://bch0ppjmkfc74" path="res://ANI/scenes/TtlANILevel/TtlANILevel.tscn" id="1_4ughe"]
+[ext_resource type="PackedScene" uid="uid://cxtql0xcyvu28" path="res://ANI/scenes/TtlANITarget/TtlANITarget.tscn" id="2_v4tya"]
+
+[node name="TtlAniLevel" instance=ExtResource("1_4ughe")]
+
+[node name="TtlAniTarget" parent="." index="3" instance=ExtResource("2_v4tya")]
+position = Vector2(573, 442)

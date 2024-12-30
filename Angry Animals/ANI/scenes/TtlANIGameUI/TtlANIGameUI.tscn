@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://tbitehbrg5re"]
+
+[ext_resource type="Script" path="res://ANI/scenes/TtlANIGameUI/TtlANIGameUI.gd" id="1_tocvp"]
+[ext_resource type="LabelSettings" uid="uid://dvykcrie1ngwh" path="res://ANI/assets/fonts/lg_48_dark_gray.tres" id="2_4ckr3"]
+[ext_resource type="LabelSettings" uid="uid://bdp73ipynj31a" path="res://ANI/assets/fonts/lg_96_blue.tres" id="3_gpr7o"]
+[ext_resource type="FontFile" uid="uid://c2802w7pd7lsi" path="res://ANI/assets/fonts/LuckiestGuy-Regular.ttf" id="4_0qje3"]
+[ext_resource type="AudioStream" uid="uid://b8o3yahrkby5o" path="res://ANI/assets/audio/jazzyfrenchy.mp3" id="5_0pvsm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kvyev"]
+font = ExtResource("4_0qje3")
+font_size = 64
+font_color = Color(0.176471, 0.403922, 0.827451, 1)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.466667)
+
+[node name="TtlAniGameUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_tocvp")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level 1"
+label_settings = ExtResource("2_4ckr3")
+
+[node name="AttemptsLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Attempts: 3"
+label_settings = ExtResource("2_4ckr3")
+
+[node name="LevelCompleteContainer" type="VBoxContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LevelCompleteLabel" type="Label" parent="MarginContainer/LevelCompleteContainer"]
+layout_mode = 2
+text = "Level Complete!"
+label_settings = ExtResource("3_gpr7o")
+
+[node name="PressSpaceLabel" type="Label" parent="MarginContainer/LevelCompleteContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Press Space"
+label_settings = SubResource("LabelSettings_kvyev")
+
+[node name="GameSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_0pvsm")

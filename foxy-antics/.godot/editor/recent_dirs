@@ -1,0 +1,12 @@
+res://FAN/assets/items
+res://FAN/assets/enemies/eagle
+res://FAN/scenes/enemies/TtlFANEnemyEagle
+res://FAN/scenes/enemies/TtlFANEnemyBase
+res://FAN/assets/enemies/frog
+res://FAN/scenes/enemies/TtlFANEnemyFrog
+res://FAN/assets/enemies/snail
+res://FAN/singletons
+res://FAN/scenes/TtlFANBulletEnemy
+res://FAN/scenes/TtlFANBulletBase
+res://FAN/scenes/TtlFANPlayerCam
+res://

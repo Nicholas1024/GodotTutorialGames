@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bch0ppjmkfc74"]
+
+[ext_resource type="Texture2D" uid="uid://4tdpn1dcq80n" path="res://ANI/assets/scene/colored_castle.png" id="1_8sag1"]
+[ext_resource type="Script" path="res://ANI/scenes/TtlANILevel/TtlANILevel.gd" id="1_ponh7"]
+[ext_resource type="PackedScene" uid="uid://dkogsjn8buw4p" path="res://ANI/scenes/TtlANIWater/TtlANIWater.tscn" id="2_jpj7j"]
+[ext_resource type="PackedScene" uid="uid://b8f7gityqgwdf" path="res://ANI/scenes/TtlANIScorer/TtlANIScorer.tscn" id="4_hnkhe"]
+[ext_resource type="PackedScene" uid="uid://tbitehbrg5re" path="res://ANI/scenes/TtlANIGameUI/TtlANIGameUI.tscn" id="5_e5vr0"]
+
+[node name="TtlAniLevel" type="Node2D"]
+script = ExtResource("1_ponh7")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(587, 277)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_8sag1")
+
+[node name="AnimalStart" type="Marker2D" parent="."]
+position = Vector2(248, 337)
+scale = Vector2(1.2, 1.2)
+
+[node name="TtlAniWater" parent="." instance=ExtResource("2_jpj7j")]
+z_index = 1
+position = Vector2(582, 603)
+
+[node name="TtlAniScorer" parent="." instance=ExtResource("4_hnkhe")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TtlAniGameUi" parent="CanvasLayer" instance=ExtResource("5_e5vr0")]

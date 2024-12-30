@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dky1j3orotq36"]
+
+[ext_resource type="Script" path="res://FAN/scenes/TtlFANObjectMaker/TtlFANObjectMaker.gd" id="1_krrie"]
+
+[node name="TtlFANObjectMaker" type="Node2D"]
+script = ExtResource("1_krrie")

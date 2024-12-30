@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://bon03pjxukb8x"]
+
+[ext_resource type="Texture2D" uid="uid://tyxgw6slgrtq" path="res://ANI/assets/env/MainBG.png" id="1_b76u1"]
+[ext_resource type="PackedScene" uid="uid://cplm6ijbqahoe" path="res://ANI/scenes/TtlANILevelButton/TtlANILevelButton.tscn" id="2_r7lvg"]
+[ext_resource type="LabelSettings" uid="uid://bdp73ipynj31a" path="res://ANI/assets/fonts/lg_96_blue.tres" id="3_phiam"]
+[ext_resource type="AudioStream" uid="uid://dcdguqtari6vv" path="res://ANI/assets/audio/birdsong.wav" id="4_2h36k"]
+
+[node name="TtlAniMainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_b76u1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = -50.0
+offset_right = 154.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="TtlAniLevelButton1" parent="HBoxContainer" instance=ExtResource("2_r7lvg")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+m_iLevelNumber = 1
+
+[node name="TtlAniLevelButton2" parent="HBoxContainer" instance=ExtResource("2_r7lvg")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+m_iLevelNumber = 2
+
+[node name="TtlAniLevelButton3" parent="HBoxContainer" instance=ExtResource("2_r7lvg")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+m_iLevelNumber = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0523599
+mouse_filter = 2
+theme_override_constants/margin_top = 20
+
+[node name="Title" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Angry Animals"
+label_settings = ExtResource("3_phiam")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2h36k")
+autoplay = true

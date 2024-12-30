@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://wltaaq7p2e30"]
+
+[ext_resource type="PackedScene" uid="uid://dfq40gl0nl5ne" path="res://TAP/scenes/TtlTAPLaser/TtlTAPLaser.tscn" id="1_adr10"]
+[ext_resource type="Script" path="res://TAP/scenes/TtlTAPPipesObstacle/TtlTAPPipesObstacle.gd" id="1_kgle6"]
+[ext_resource type="PackedScene" uid="uid://d1i1jfff83s6n" path="res://TAP/scenes/TtlTAPSinglePipe/TtlTAPSinglePipe.tscn" id="2_fnfg8"]
+[ext_resource type="AudioStream" uid="uid://cx700mu8evkbh" path="res://TAP/assets/audio/score.wav" id="4_rgli1"]
+
+[node name="TtlTapPipesObstacle" type="Node2D"]
+script = ExtResource("1_kgle6")
+
+[node name="TtlTapLaser" parent="." instance=ExtResource("1_adr10")]
+rotation = -0.00133741
+
+[node name="BottomPipe" parent="." instance=ExtResource("2_fnfg8")]
+position = Vector2(0, 100)
+
+[node name="TopPipe" parent="." instance=ExtResource("2_fnfg8")]
+position = Vector2(0, -100)
+rotation = 3.13847
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-35, -750, 70, 1500)
+
+[node name="ScoreSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rgli1")
+
+[connection signal="body_exited" from="TtlTapLaser" to="." method="_on_laser_body_exited"]
+[connection signal="body_entered" from="BottomPipe" to="." method="_on_pipe_body_entered"]
+[connection signal="body_entered" from="TopPipe" to="." method="_on_pipe_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
